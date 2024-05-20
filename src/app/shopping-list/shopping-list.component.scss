@@ -1,0 +1,27 @@
+.list{
+  background-color: white;
+  padding: 10px;
+  .list-header{
+    .list-title{
+      border-bottom: 1px dashed #333;
+      padding: 5px 5px 8px 5px;
+    }
+  }
+  .list-body{
+    ul{
+      list-style-type: none;
+      li{
+        a{
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          color: #333;
+          text-decoration: none;
+        }
+        a:hover{
+          background-color: #ff6f61;
+        }
+      }
+    }
+  }
+}

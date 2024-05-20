@@ -1,0 +1,57 @@
+
+<!-- Modal -->
+<div class="modal fade" id="recipreDetailsModal" #recipreDetailsModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Recipe Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row">
+
+        <div class="col-md-6">
+            <div class="img-fluid">
+              <img [src]="recipeDetails.imagePath" width="100%" [alt]="recipeDetails.name">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="title text-start">
+            {{recipeDetails.name}}
+          </div>
+          <div class="desc text-start">
+            {{recipeDetails.description}}
+          </div>
+          <div class="actionBtn dropdown text-center">
+              <a class="dropdown-toggle w-100 text-end" href="#" id="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Manage
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown">
+                <a class="dropdown-item" href="#">Add To Shopping-list</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Edit</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="#">Delete</a>
+              </div>
+            </div>
+          <div class="ingredients mt-3">
+            <h4>Ingredients :</h4>
+            <pre>
+              -----------------------------------
+              -----------------------------------
+              -----------------------------------
+              -----------------------------------
+              -----------------------------------
+              -----------------------------------
+              -----------------------------------
+              -----------------------------------
+            </pre>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+
+<a href="#" class="float-btn" data-title="New Recipe">
+  <i class="fa fa-plus my-float"></i>
+</a>
+<div class="container">
+  <div class="row">
+   <div class="col-lg-3 col-md-6 col-sm-1" *ngFor="let recipe of recipes">
+
+    <div class="card" (click)="onOpenModal(recipe)">
+     <div class="card-image">
+         <img [src]="recipe.imagePath" alt="{{recipe.name}}">
+     </div>
+     <div class="card-content">
+      <span class="title">{{recipe.name}}</span>
+      <h2 class="description">{{recipe.description}}</h2>
+    </div>
+    <div class="recipe-item">
+      <app-recipe-item></app-recipe-item>
+    </div>
+   </div>
+   </div>
+  </div>
+ </div>
+
+
+
+
+
