@@ -1,17 +1,21 @@
-<form>
-  <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Ex: Pasta">
-  </div>
-  <div class="mb-3">
-    <label for="amount" class="form-label">Amount</label>
-    <input type="text" class="form-control" id="amount" placeholder="Ex: 100 piece,gram, etc...">
-  </div>
+<div class="form-wrap">
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Ex: Pasta" #nameInput (input)="onValidate()">
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount</label>
+      <input type="text" class="form-control" id="amount" placeholder="Ex: 100 piece,gram, etc..." #amountInput (input)="onValidate()">
+    </div>
 
-  <div class="mt-4 d-flex justify-content-center gap-3">
-    <button type="submit" class="btn btn-success">add</button>
-    <button type="button" class="btn btn-danger">delete</button>
-    <button type="button" class="btn btn-primary">clear</button>
-  </div>
+    <div class="mt-4 d-flex justify-content-center gap-3">
+      <button type="button" class="btn btn-success" (click)="onAddItem()" [disabled]="isDisabled">add</button>
+      <button type="button" class="btn btn-danger">delete</button>
+      <button type="button" class="btn btn-primary" (click)="onClear()">clear</button>
+    </div>
 
-</form>
+  </form>
+</div>
+
+

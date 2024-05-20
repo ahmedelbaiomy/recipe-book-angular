@@ -5,7 +5,7 @@ import { Ingredients } from '../shared/models/ingredients.model';
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrl: './shopping-list.component.scss',
-  
+
 })
 export class ShoppingListComponent {
   ingredients:Ingredients[]=[
@@ -14,4 +14,7 @@ export class ShoppingListComponent {
     new Ingredients('Pasta',27)
   ];
 
+  onAddItem(ingredient:Ingredients){
+    this.ingredients.push(ingredient);
+  }
 }

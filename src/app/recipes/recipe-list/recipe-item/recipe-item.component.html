@@ -1,1 +1,10 @@
 <!-- <p>recipe-item works!</p> -->
+<div class="card" (click)="openModal(recipe)">
+  <div class="card-image">
+      <img [src]="recipe.imagePath" alt="{{recipe.name}}">
+  </div>
+  <div class="card-content">
+   <span class="title">{{recipe.name}}</span>
+   <h2 class="description">{{recipe.description}}</h2>
+ </div>
+</div>
