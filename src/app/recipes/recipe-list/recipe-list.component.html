@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
    <div class="col-lg-3 col-md-6 col-sm-1" *ngFor="let recipe of recipes">
-      <app-recipe-item (recipeSelected)="onOpenModal(recipe)" [recipe]="recipe"></app-recipe-item>
+      <app-recipe-item [recipe]="recipe"></app-recipe-item>
    </div>
    </div>
  </div>
