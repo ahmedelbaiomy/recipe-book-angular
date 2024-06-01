@@ -71,5 +71,8 @@ export class RecipeService {
   setRecipe(recipe:Recipe){
     this.recipeSelected.emit(recipe);
   }
+  getRecipeById(id:number){
+    return this.recipes[id];
+  }
 
 }
