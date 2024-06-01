@@ -9,6 +9,11 @@ nav{
   color: #333;
   cursor: pointer;
 }
+.active{
+  color: #ff6f61 !important;
+  transform: scale(1.1);
+  font-weight: bold;
+}
 
 @media (min-width: 992px) {
   .navbar-brand {
