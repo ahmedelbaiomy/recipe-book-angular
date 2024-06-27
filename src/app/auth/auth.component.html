@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card"></div>
+  <div class="card">
+    <div class="alert alert-danger"  *ngIf="error">{{error}}</div>
+
+    <div *ngIf="isLoading" class="text-center">
+      <app-spinner></app-spinner>
+    </div>
+    <h1 class="title">{{ loginForm === true ? 'Login' : 'Register' }}</h1>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" *ngIf="!isLoading">
+      <div class="input-container">
+        <input type="text" id="Username" name="email" ngModel email required="required"/>
+        <label for="Username">Email</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="password" id="Password" required="required" minlength="6" name="password" ngModel/>
+        <label for="Password">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button type="submit" class="loginBtn" [disabled]="form.invalid"><span> {{ loginForm === true ? 'Login' : 'Register Now' }}</span></button>
+
+        <a (click)="onSwitchForm()" type="button"><span>switch to {{loginForm === true ? 'register' : 'Login'}}</span></a>
+      </div>
+    </form>
+  </div>
+
+</div>
+
