@@ -5,5 +5,5 @@ export interface IAuthResponse {
   refreshToken:string;
   email:string;
   localId:string;
-
+  registered?:boolean;
 }

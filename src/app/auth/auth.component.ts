@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { IAuthResponse } from '../interfaces/auth.response';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +14,7 @@ export class AuthComponent {
   loginForm:boolean=true;
   isLoading:boolean=false;
   error='';
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private route:Router) { }
 
   onSwitchForm(){
     this.loginForm=!this.loginForm;
@@ -22,25 +24,26 @@ export class AuthComponent {
 
     const email = form.value.email;
     const password = form.value.password;
-
+    let authObs:Observable<IAuthResponse>;
     this.isLoading = true;
     if(this.loginForm){
-      this.authService.login({email,password}).subscribe(()=>{
-
-      })
+      authObs=this.authService.login({email,password});
     }else{
-      this.authService.register({ email, password }).subscribe({
-        next: (data: IAuthResponse) => {
-          console.log(data);
-          this.isLoading = false;
-        },
-        error: (err: any) => {
-          console.log(err);
-          this.isLoading = false;
-          this.error = 'An error occured';
-        }
-      });
+      authObs= this.authService.register({ email, password });
     }
+
+    authObs.subscribe({
+      next: (data: IAuthResponse) => {
+        this.isLoading = false;
+        console.log(data);
+        this.route.navigate(['/recipes']);
+      },
+      error: (err: any) => {
+        this.isLoading=false;
+        this.error = err;
+        console.log(err)
+      }
+    })
 
   }
 }
