@@ -1,1 +1,28 @@
-<p>edit-recipe works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-wrap">
+        <form #f="ngForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Ex: Pasta" required
+              name="name" />
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" placeholder="Ex: 100 piece,gram, etc..." name="amount" />
+          </div>
+
+          <div class="mt-4 d-flex justify-content-center gap-3">
+            <button type="submit" class="btn btn-success" [disabled]="f.invalid">
+              submit
+            </button>
+            <button type="button" class="btn btn-danger">
+              cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

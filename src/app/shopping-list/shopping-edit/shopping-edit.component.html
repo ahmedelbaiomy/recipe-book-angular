@@ -1,17 +1,20 @@
 <div class="form-wrap">
-  <form>
+  <form (ngSubmit)="onAddItem(f)" #f="ngForm">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Ex: Pasta" #nameInput (input)="onValidate()">
+      <input type="text" class="form-control" id="name" placeholder="Ex: Pasta" required #name="ngModel" ngModel name="name" >
+      <small class="text-danger" *ngIf="name.touched && name.invalid">name is required</small>
+
     </div>
     <div class="mb-3">
       <label for="amount" class="form-label">Amount</label>
-      <input type="text" class="form-control" id="amount" placeholder="Ex: 100 piece,gram, etc..." #amountInput (input)="onValidate()">
+      <input type="number" class="form-control" id="amount" placeholder="Ex: 100 piece,gram, etc..." required #amount="ngModel" ngModel name="amount">
+      <small class="text-danger" *ngIf="amount.touched && amount.invalid">amount is required</small>
     </div>
 
     <div class="mt-4 d-flex justify-content-center gap-3">
-      <button type="button" class="btn btn-success" (click)="onAddItem()" [disabled]="isDisabled">add</button>
-      <button type="button" class="btn btn-danger">delete</button>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid">{{editMode ? "update": 'add' }}</button>
+      <button *ngIf="editMode" (click)="onDelete()" type="button" class="btn btn-danger">delete</button>
       <button type="button" class="btn btn-primary" (click)="onClear()">clear</button>
     </div>
 

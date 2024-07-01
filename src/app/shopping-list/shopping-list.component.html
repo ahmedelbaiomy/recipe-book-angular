@@ -10,8 +10,8 @@
           </div>
           <div class="list-body">
             <ul class="list-group">
-              <li class="mt-2" *ngFor="let item of ingredients">
-                <a href="#" class="px-3">{{item.name}} <span>{{item.amount}}</span></a>
+              <li class="mt-2" *ngFor="let item of ingredients; let i= index">
+                <a class="px-3" (click)="onEdit(i)">{{item.name}} <span>{{item.amount}}</span></a>
               </li>
             </ul>
           </div>
