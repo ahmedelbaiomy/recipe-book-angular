@@ -13,6 +13,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class RecipeDetailsComponent implements OnInit{
   recipeDetails!:Recipe;
   latestRecipes:Recipe[]=[];
+  id!:number;
   constructor(private shoppingListService:ShoppingListService,private activatedRoute:ActivatedRoute,private recipeService:RecipeService,
     private router:Router
   ){}
@@ -20,6 +21,7 @@ export class RecipeDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.recipeDetails = this.recipeService.getRecipeById(+params['id'])
+      this.id = +params['id']
     })
 
     this.latestRecipes = this.recipeService.getRecipes();
@@ -30,5 +32,9 @@ export class RecipeDetailsComponent implements OnInit{
   }
   onEditRecipe(){
     this.router.navigate(['edit'],{relativeTo:this.activatedRoute})
+  }
+  onDeleteRecipe(){
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['../'],{relativeTo:this.activatedRoute})
   }
 }

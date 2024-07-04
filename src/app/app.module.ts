@@ -12,7 +12,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { AuthComponent } from './auth/auth.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -34,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         SharedModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule
     ]
 })

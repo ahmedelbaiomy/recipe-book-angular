@@ -2,22 +2,56 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="form-wrap">
-        <form #f="ngForm">
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Ex: Pasta" required
-              name="name" />
+            <input type="text" class="form-control" id="name" required name="name" formControlName="name" />
           </div>
           <div class="mb-3">
-            <label for="amount" class="form-label">Amount</label>
-            <input type="number" class="form-control" id="amount" placeholder="Ex: 100 piece,gram, etc..." name="amount" />
+            <label for="image" class="form-label">Image</label>
+            <input type="text" class="form-control" id="image" name="imagePath" #imagePath formControlName="imagePath"/>
           </div>
 
+          @if(imagePath.value){
+          <div class="mb-3">
+            <img [src]="imagePath.value" class="img-fluid" width="250" height="250"/>
+          </div>
+        }
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="description" required name="description" rows="3" formControlName="description"></textarea>
+          </div>
+
+          <div class="mb-3 row" >
+            <div class="col-md-12" formArrayName="ingredients">
+              <div class="row" *ngFor="let ingredients of ingredientsControl;let i = index"
+              [formGroupName]="i">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" formControlName="amount">
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-sm btn-danger" (click)="onDeleteIngredient(i)">x</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <hr>
+          <div class="mb-3 row" >
+            <div class="col-md-12">
+              <button type="button" class="btn btn-primary float-end" (click)="onAddIngredient()">add ingredients</button>
+
+            </div>
+          </div>
           <div class="mt-4 d-flex justify-content-center gap-3">
-            <button type="submit" class="btn btn-success" [disabled]="f.invalid">
+            <button type="submit" class="btn btn-success" [disabled]="recipeForm.invalid">
               submit
             </button>
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger" (click)="onCancel()">
               cancel
             </button>
           </div>
