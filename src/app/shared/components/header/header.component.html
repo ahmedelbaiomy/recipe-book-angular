@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg px-5">
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav px-5 py-3">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/recipes" *ngIf="isAuthenticated">Recipes</a>
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" routerLinkActive="active" routerLink="/recipes">Recipes</a>
       </li>
-      <li class="nav-item" >
-        <a class="nav-link" routerLinkActive="active" routerLink="/shopping-list" *ngIf="isAuthenticated">Shopping List</a>
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" routerLinkActive="active" routerLink="/shopping-list">Shopping List</a>
       </li>
       <li class="nav-item dropdown" *ngIf="isAuthenticated">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -24,11 +24,11 @@
   </a>
 
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" routerLink="auth" *ngIf="!isAuthenticated">Login</a>
+    <li class="nav-item"  *ngIf="!isAuthenticated">
+      <a class="nav-link" routerLinkActive="active" routerLink="auth">Login</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" *ngIf="isAuthenticated">Logout</a>
+    <li class="nav-item"  *ngIf="isAuthenticated">
+      <a class="nav-link" routerLinkActive="active" (click)="onLogout()">Logout</a>
     </li>
   </ul>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

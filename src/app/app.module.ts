@@ -13,7 +13,8 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorService } from './interceptors/auth.interceptors';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
         EditRecipeComponent,
         AuthComponent,
     ],
-    providers: [],
+    providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
