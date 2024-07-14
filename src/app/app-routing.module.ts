@@ -1,28 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RecipesComponent } from './recipes/recipes.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
-import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
-import { AuthComponent } from './auth/auth.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
     path:'recipes',
-    component:RecipesComponent,
-    children: [
-      { path: '', component: RecipeListComponent},
-      { path: 'new', component: EditRecipeComponent},
-      { path: ':id', component: RecipeDetailsComponent},
-      { path: ':id/edit', component: EditRecipeComponent}
-
-    ]
+    loadChildren:()=>import('./recipes/recipes/recipes.module').then(m=>m.RecipesModule)
   },
-  {path:'shopping-list',component:ShoppingListComponent},
-  {path:'auth',component:AuthComponent}
-
+  {
+    path:'shopping-list',
+    loadChildren:()=>import('./shopping-list/shopping-list/shopping-list.module').then(m=>m.ShoppingListModule)
+  },
+  {
+    path:'auth',
+    loadChildren:()=>import('./auth/auth/auth.module').then(m=>m.AuthModule)
+  }
 ];
 
 @NgModule({
